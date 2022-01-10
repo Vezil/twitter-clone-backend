@@ -12,18 +12,10 @@ services:
             - ~/data/postgres.twitter_demo.docker:/var/lib/postgres/data
         ports:
             - 127.0.0.1:3399:5432
-        networks:
-            - global
 
     redis:
         image: redis:latest
         container_name: redis.twitter_demo.docker
         restart: unless-stopped
-        networks:
-            - global
         ports:
             - 127.0.0.1:6399:6379
-
-networks:
-    global:
-        external: true
