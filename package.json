@@ -22,6 +22,7 @@
         "nexus": "1.1.0"
     },
     "devDependencies": {
+        "@faker-js/faker": "^6.0.0-alpha.5",
         "@types/bcryptjs": "2.4.2",
         "@types/jsonwebtoken": "8.5.6",
         "@types/node": "16.11.11",
