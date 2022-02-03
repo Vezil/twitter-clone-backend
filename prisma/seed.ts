@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import generateUsersData from './seeds/users';
+import { createUsers } from './seeds/users';
+import { createProfiles } from './seeds/profiles';
 
 const prisma = new PrismaClient();
 
@@ -7,13 +8,9 @@ async function main() {
     try {
         console.log(`Start seeding ...`);
 
-        for (const user of await generateUsersData) {
-            const { id } = await prisma.user.create({
-                data: user
-            });
+        await createUsers(prisma);
 
-            console.log(`Created user with id: ${id}`);
-        }
+        await createProfiles(prisma);
 
         console.log(`Seeding finished successfully.`);
     } catch (error) {

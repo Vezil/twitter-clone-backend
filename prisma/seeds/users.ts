@@ -1,20 +1,28 @@
-import { Prisma } from '@prisma/client';
 import { hash } from 'bcryptjs';
 import faker from '@faker-js/faker';
 
-async function generateUsersData() {
-    const usersData = [];
-
-    for (let i = 0; i < 20; i++) {
-        const name = faker.name.findName();
-        const email = faker.internet.email();
-        const password = Math.random().toString(36);
-        const hashedPassword = await hash(password, 10);
-
-        usersData.push({ name, email, password: hashedPassword });
-    }
-
-    return usersData as Prisma.UserCreateInput[];
+interface User {
+    name: string;
+    email: string;
+    password: string;
 }
 
-export default generateUsersData();
+async function createUsers(prisma: any) {
+    for (let i = 0; i < 20; i++) {
+        const password = Math.random().toString(36);
+
+        const user: User = {
+            name: faker.name.findName(),
+            email: faker.internet.email(),
+            password: await hash(password, 10)
+        };
+
+        const { id } = await prisma.user.create({
+            data: user
+        });
+
+        console.log(`Created user with id: ${id}`);
+    }
+}
+
+export { createUsers };
