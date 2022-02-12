@@ -6,7 +6,7 @@ import { Context } from '../context';
 
 export const Mutation = objectType({
     name: 'Mutation',
-    definition(t) {
+    definition(t: any) {
         t.field('signup', {
             type: 'AuthPayload',
             args: {
@@ -14,7 +14,7 @@ export const Mutation = objectType({
                 email: nonNull(stringArg()),
                 password: nonNull(stringArg())
             },
-            resolve: async (_parent, args, context: Context) => {
+            resolve: async (_parent: any, args: any, context: Context) => {
                 const hashedPassword = await hash(args.password, 10);
                 const user = await context.prisma.user.create({
                     data: {
@@ -37,7 +37,7 @@ export const Mutation = objectType({
                 email: nonNull(stringArg()),
                 password: nonNull(stringArg())
             },
-            resolve: async (_parent, { email, password }, context: Context) => {
+            resolve: async (_parent: any, { email, password }: any, context: Context) => {
                 const user = await context.prisma.user.findUnique({
                     where: {
                         email
@@ -69,7 +69,7 @@ export const Mutation = objectType({
                 website: stringArg(),
                 avatar: stringArg()
             },
-            resolve: async (_parent, args, ctx) => {
+            resolve: async (_parent: any, args: any, ctx: any) => {
                 const userId = getUserId(ctx);
 
                 if (!userId) {
@@ -94,7 +94,7 @@ export const Mutation = objectType({
                 website: stringArg(),
                 avatar: stringArg()
             },
-            resolve: async (_parent, { id, ...args }, ctx) => {
+            resolve: async (_parent: any, { id, ...args }: any, ctx: any) => {
                 const userId = getUserId(ctx);
 
                 if (!userId) {
@@ -117,7 +117,7 @@ export const Mutation = objectType({
             args: {
                 content: nonNull(stringArg())
             },
-            resolve: async (_parent, { content }, ctx) => {
+            resolve: async (_parent: any, { content }: any, ctx: any) => {
                 const userId = getUserId(ctx);
 
                 if (!userId) {
@@ -138,7 +138,7 @@ export const Mutation = objectType({
             args: {
                 id: intArg()
             },
-            resolve: async (_parent, { id }, ctx) => {
+            resolve: async (_parent: any, { id }: any, ctx: any) => {
                 const userId = getUserId(ctx);
 
                 if (!userId) {
@@ -159,7 +159,7 @@ export const Mutation = objectType({
             args: {
                 id: nonNull(intArg())
             },
-            resolve: async (_parent, { id }, ctx) => {
+            resolve: async (_parent: any, { id }: any, ctx: any) => {
                 const userId = getUserId(ctx);
 
                 if (!userId) {
@@ -178,7 +178,7 @@ export const Mutation = objectType({
                 id: nonNull(intArg()),
                 content: nonNull(stringArg())
             },
-            resolve: async (_parent, { id, content }, context: Context) => {
+            resolve: async (_parent: any, { id, content }: any, context: Context) => {
                 const userId = getUserId(context);
 
                 if (!userId) {
@@ -202,7 +202,7 @@ export const Mutation = objectType({
                 content: nonNull(stringArg()),
                 commentId: nonNull(intArg())
             },
-            resolve: async (_parent, { id, content, commentId }, context: Context) => {
+            resolve: async (_parent: any, { id, content, commentId }: any, context: Context) => {
                 const userId = getUserId(context);
 
                 if (!userId) {
@@ -227,7 +227,7 @@ export const Mutation = objectType({
                 followId: nonNull(intArg()),
                 avatar: stringArg()
             },
-            resolve: async (_parent, { name, followId, avatar }, context: Context) => {
+            resolve: async (_parent: any, { name, followId, avatar }: any, context: Context) => {
                 const userId = getUserId(context);
 
                 if (!userId) {
@@ -250,7 +250,7 @@ export const Mutation = objectType({
             args: {
                 id: nonNull(intArg())
             },
-            resolve: async (_parent, { id }, ctx) => {
+            resolve: async (_parent: any, { id }: any, ctx: any) => {
                 const userId = getUserId(ctx);
 
                 if (!userId) {
