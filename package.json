@@ -13,7 +13,7 @@
         "db-deploy": "./node_modules/.bin/prisma migrate deploy",
         "db-seed": "ts-node prisma/seed.ts",
         "db-setup": "npm run db-push && npm run db-migrate",
-        "db-reset": "./node_modules/.bin/prisma migrate reset"
+        "db-reset": "./node_modules/.bin/prisma migrate reset --force"
     },
     "dependencies": {
         "@nexus/schema": "^0.20.1",
