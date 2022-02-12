@@ -3,8 +3,8 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
-        "start": "ts-node --transpile-only src/server.ts",
-        "build": "npm install && npm install ts-node && npm run db-reset && npm start",
+        "build": "npm install && tsc && npm run db-reset && npm start",
+        "start": "node src/server.js",
         "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
         "generate:prisma": "prisma generate",
         "generate:nexus": "ts-node --transpile-only src/schema",
@@ -37,7 +37,7 @@
         "prisma": "3.5.0",
         "ts-node": "^10.4.0",
         "ts-node-dev": "1.1.8",
-        "typescript": "^4.5.2"
+        "typescript": "^4.5.5"
     },
     "prisma": {
         "seed": "ts-node prisma/seed.ts"
