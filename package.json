@@ -6,7 +6,7 @@
         "build": "npm install && tsc && npm run db-reset",
         "tsc": "tsc",
         "postinstall": "npm run tsc && npm start",
-        "start": "node src/server.js",
+        "start": "ts-node --transpile-only src/server",
         "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
         "generate:prisma": "prisma generate",
         "generate:nexus": "ts-node --transpile-only src/schema",
