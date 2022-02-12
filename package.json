@@ -3,7 +3,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
-        "build": "npm install && tsc && npm run db-reset && npm start",
+        "build": "npm install && npm run db-reset && npm start",
         "start": "node src/server.js",
         "tsc": "tsc",
         "postinstall": "npm run tsc",
