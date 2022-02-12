@@ -3,8 +3,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
-        "build": "npm install && tsc && npm run db-reset",
-        "postinstall": "npm start",
+        "build": "npm install && tsc && npm run db-reset && npm start",
         "start": "node src/server.js",
         "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
         "generate:prisma": "prisma generate",
