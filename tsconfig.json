@@ -3,9 +3,19 @@
         "esModuleInterop": true,
         "outDir": "dist",
         "rootDir": "src",
-        "lib": ["esnext"],
-        "typeRoots": ["./src/generated"],
+        "lib": [
+            "esnext"
+        ],
+        "types": [
+            "node"
+        ],
+        "typeRoots": [
+            "node_modules/@types",
+            "./src/generated"
+        ],
         "strict": true
     },
-    "include": ["src/**/*"]
+    "include": [
+        "src/**/*"
+    ]
 }
