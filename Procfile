@@ -1,1 +1,1 @@
-web: npm run db-reset && npm run dev
+web: npm run build
