@@ -1,23 +1,12 @@
-import { ApolloServer, gql } from 'apollo-server';
-
-const schema = gql`
-    type Query {
-        hello: String!
-    }
-`
-
-const resolvers = {
-    Query: {
-        hello: () => 'world'
-    }
-}
+import { ApolloServer } from 'apollo-server';
+import { createContext } from './context';
+import { schema } from './schema';
 
 const server = new ApolloServer({
-    typeDefs: schema,
-    resolvers: resolvers,
-    introspection: true,
+    schema,
+    context: createContext
 });
 
-server.listen({ port: process.env.PORT || 4000 }).then(({ url }) => {
-    console.log(`🚀 Server ready at ${url}`);
+server.listen({ port: process.env.PORT || 4000, }).then(({ url }) => {
+    console.log(`Server ready at: ${url})`);
 });
