@@ -4,9 +4,9 @@
     "scripts": {
         "dev": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
         "tsc": "tsc",
-        "build": "npm install && npm run db-reset && npm start",
+        "build": "npm install && npm run db-reset",
         "postinstall": "npm run tsc && npm run start",
-        "start": "node src/server",
+        "start": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
         "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
         "generate:prisma": "prisma generate",
         "generate:nexus": "ts-node --transpile-only src/schema",
