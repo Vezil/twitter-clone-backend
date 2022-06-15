@@ -7,6 +7,7 @@ const server = new ApolloServer({
     context: createContext
 });
 
-server.listen({ path: process.env.HOST }).then(({ url }) => {
+server.listen({ host: process.env.HOST || 'localhost', port: process.env.PORT || 4000, ssl: true, }).then(({ url }) => {
     console.log(`Server ready at: ${url})`);
 });
+
