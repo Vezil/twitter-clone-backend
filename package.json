@@ -3,7 +3,7 @@
     "license": "MIT",
     "scripts": {
         "dev": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
-        "tsc": "./node_modules/typescript/bin/tsc",
+        "tsc": "./node_modules/typescript/bin/tsc && npm start",
         "build": "tsc",
         "postinstall": "npm run build",
         "start": "node src/server.js",
