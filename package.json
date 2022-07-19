@@ -5,7 +5,7 @@
         "dev": "ts-node-dev --no-notify --respawn --watch --transpile-only src/server",
         "tsc": "./node_modules/typescript/bin/tsc",
         "build": "tsc",
-        "postinstall": "npm run build && npm run db-reset && npm run db-seed",
+        "postinstall": "npm run build && npm run db-reset",
         "start": "node dist/server.js",
         "generate": "npm -s run generate:prisma && npm -s run generate:nexus",
         "generate:prisma": "prisma generate",
